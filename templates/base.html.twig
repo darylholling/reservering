@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Excellent Taste</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="{{ path('reservering_index') }}">Reserveringen</a>
+        <a class="p-2 text-dark" href="{{ path('tafel_index') }}">Tafels</a>
+        <a class="p-2 text-dark" href="#">Support</a>
+        <a class="p-2 text-dark" href="{{ path('booking_new') }}">Nieuwe reservering</a>
+    </nav>
+    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+        <a class="btn btn-outline-primary" href="{{ path('fos_user_security_logout') }}">Logout</a>
+    {% else %}
+        <a class="btn btn-outline-primary" href="{{ path('fos_user_security_login') }}">Login</a>
+    {% endif %}
+</div>
+<div class="container">
+    {% block body %}{% endblock %}
+    {% block fos_user_content %}{% endblock %}
+
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

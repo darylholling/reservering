@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="text-center">
+        <h1>Welkom Bij Excellent Taste</h1>
+        <h4>Boek nu uw Tafel!</h4>
+    </div>
+    {% if (form) %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    {% else %}
+        <h1>no form</h1>
+    {% endif %}
+{% endblock %}
